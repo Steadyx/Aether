@@ -18,7 +18,7 @@ Aether is a powerful and minimalist JSON parser designed with a strong sense of 
 
 ### 🎭 The Original JSON String
 
-\`\`\`json
+```json
 {
   "hello": "world",
   "embedded": {
@@ -27,26 +27,26 @@ Aether is a powerful and minimalist JSON parser designed with a strong sense of 
     "strings": ["hello", "world"]
   }
 }
-\`\`\`
+```
 
 ### 🎨 Tokenized Form
 
 Aether first breaks down the JSON string into a series of tokens. Each token represents a fundamental unit of the string.
 
-\`\`\`json
+```json
 [
   { "type": "PUNCTUATION", "value": "{" },
   { "type": "STRING", "value": "\"hello\"" },
   ...
   { "type": "PUNCTUATION", "value": "}" }
 ]
-\`\`\`
+```
 
 ### 🌳 Abstract Syntax Tree (AST)
 
 Next, Aether constructs an Abstract Syntax Tree (AST), which represents the hierarchical structure of the JSON data.
 
-\`\`\`json
+```json
 {
   "type": "ObjectExpression",
   "properties": [
@@ -58,7 +58,7 @@ Next, Aether constructs an Abstract Syntax Tree (AST), which represents the hier
     ...
   ]
 }
-\`\`\`
+```
 
 
 
