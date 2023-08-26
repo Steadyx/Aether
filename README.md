@@ -14,7 +14,7 @@ Aether is a powerful and minimalist JSON parser designed with a strong sense of 
 
 ---
 
-##Ever wondered how a JSON string transforms into a structured format you can manipulate? Aether does this elegantly, and here's a sneak peek into its magic!
+## Ever wondered how a JSON string transforms into a structured format you can manipulate? Aether does this elegantly, and here's a sneak peek into its magic!
 
 ### 🎭 The Original JSON String
 
