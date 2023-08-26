@@ -14,7 +14,7 @@ Aether is a powerful and minimalist JSON parser designed with a strong sense of 
 
 ---
 
-## Ever wondered how a JSON string transforms into a structured format you can manipulate? Aether does this elegantly, and here's a sneak peek into its magic!
+### Ever wondered how a JSON string transforms into a structured format you can manipulate? Aether does this elegantly, and here's a sneak peek into its magic!
 
 ### 🎭 The Original JSON String
 
@@ -37,7 +37,36 @@ Aether first breaks down the JSON string into a series of tokens. Each token rep
 [
   { "type": "PUNCTUATION", "value": "{" },
   { "type": "STRING", "value": "\"hello\"" },
-  ...
+  { "type": "PUNCTUATION", "value": ":" },
+  { "type": "STRING", "value": "\"world\"" },
+  { "type": "PUNCTUATION", "value": "," },
+  { "type": "STRING", "value": "\"embedded\"" },
+  { "type": "PUNCTUATION", "value": ":" },
+  { "type": "PUNCTUATION", "value": "{" },
+  { "type": "STRING", "value": "\"numbers\"" },
+  { "type": "PUNCTUATION", "value": ":" },
+  { "type": "NUMBER", "value": 12 },
+  { "type": "PUNCTUATION", "value": "," },
+  { "type": "STRING", "value": "\"numbers2\"" },
+  { "type": "PUNCTUATION", "value": ":" },
+  { "type": "PUNCTUATION", "value": "[" },
+  { "type": "NUMBER", "value": 1 },
+  { "type": "PUNCTUATION", "value": "," },
+  { "type": "NUMBER", "value": 2 },
+  { "type": "PUNCTUATION", "value": "," },
+  { "type": "NUMBER", "value": 3 },
+  { "type": "PUNCTUATION", "value": "," },
+  { "type": "NUMBER", "value": 4 },
+  { "type": "PUNCTUATION", "value": "]" },
+  { "type": "PUNCTUATION", "value": "," },
+  { "type": "STRING", "value": "\"strings\"" },
+  { "type": "PUNCTUATION", "value": ":" },
+  { "type": "PUNCTUATION", "value": "[" },
+  { "type": "STRING", "value": "\"hello\"" },
+  { "type": "PUNCTUATION", "value": "," },
+  { "type": "STRING", "value": "\"world\"" },
+  { "type": "PUNCTUATION", "value": "]" },
+  { "type": "PUNCTUATION", "value": "}" },
   { "type": "PUNCTUATION", "value": "}" }
 ]
 ```
@@ -55,7 +84,44 @@ Next, Aether constructs an Abstract Syntax Tree (AST), which represents the hier
       "key": { "type": "StringLiteral", "value": "hello" },
       "value": { "type": "StringLiteral", "value": "world" }
     },
-    ...
+    {
+      "type": "Property",
+      "key": { "type": "StringLiteral", "value": "embedded" },
+      "value": {
+        "type": "ObjectExpression",
+        "properties": [
+          {
+            "type": "Property",
+            "key": { "type": "StringLiteral", "value": "numbers" },
+            "value": { "type": "NumberLiteral", "value": 12 }
+          },
+          {
+            "type": "Property",
+            "key": { "type": "StringLiteral", "value": "numbers2" },
+            "value": {
+              "type": "ArrayExpression",
+              "elements": [
+                { "type": "NumberLiteral", "value": 1 },
+                { "type": "NumberLiteral", "value": 2 },
+                { "type": "NumberLiteral", "value": 3 },
+                { "type": "NumberLiteral", "value": 4 }
+              ]
+            }
+          },
+          {
+            "type": "Property",
+            "key": { "type": "StringLiteral", "value": "strings" },
+            "value": {
+              "type": "ArrayExpression",
+              "elements": [
+                { "type": "StringLiteral", "value": "hello" },
+                { "type": "StringLiteral", "value": "world" }
+              ]
+            }
+          }
+        ]
+      }
+    }
   ]
 }
 ```
