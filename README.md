@@ -12,6 +12,56 @@ Aether is a powerful and minimalist JSON parser designed with a strong sense of 
 - **Extensible:** Aether's modular design allows for easy customization and extension.
 - **Community-Driven:** Aether values community contributions and encourages collaboration.
 
+---
+
+##Ever wondered how a JSON string transforms into a structured format you can manipulate? Aether does this elegantly, and here's a sneak peek into its magic!
+
+### 🎭 The Original JSON String
+
+\`\`\`json
+{
+  "hello": "world",
+  "embedded": {
+    "numbers": 12,
+    "numbers2": [1, 2, 3, 4],
+    "strings": ["hello", "world"]
+  }
+}
+\`\`\`
+
+### 🎨 Tokenized Form
+
+Aether first breaks down the JSON string into a series of tokens. Each token represents a fundamental unit of the string.
+
+\`\`\`json
+[
+  { "type": "PUNCTUATION", "value": "{" },
+  { "type": "STRING", "value": "\"hello\"" },
+  ...
+  { "type": "PUNCTUATION", "value": "}" }
+]
+\`\`\`
+
+### 🌳 Abstract Syntax Tree (AST)
+
+Next, Aether constructs an Abstract Syntax Tree (AST), which represents the hierarchical structure of the JSON data.
+
+\`\`\`json
+{
+  "type": "ObjectExpression",
+  "properties": [
+    {
+      "type": "Property",
+      "key": { "type": "StringLiteral", "value": "hello" },
+      "value": { "type": "StringLiteral", "value": "world" }
+    },
+    ...
+  ]
+}
+\`\`\`
+
+
+
 ## Installation:
  -- Nothing yet 
 

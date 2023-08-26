@@ -1,7 +1,7 @@
 import  tokenize  from './tokeniser';
 import  parse  from './parser';
 
-const code = `{
+const json = `{
   "hello": "world",
   "embedded": {
     "numbers": 12,
@@ -10,7 +10,7 @@ const code = `{
   }
 }`;
 
-const tokens = tokenize(code);
+const tokens = tokenize(json);
 const ast = parse(tokens);
 console.log(JSON.stringify(ast, null, 2));
 
