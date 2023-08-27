@@ -16,7 +16,15 @@ Aether is a powerful and minimalist JSON parser designed with a strong sense of 
 
 ### Ever wondered how a JSON string transforms into a structured format you can manipulate? Aether does this elegantly, and here's a sneak peek into its magic!
 
+
+## Installation:
+ ```bash
+  npm i -g @steadyx/aether
+ ```
+
+
 ### 🎭 The Original JSON String
+
 
 ```json
 {
@@ -128,6 +136,4 @@ Next, Aether constructs an Abstract Syntax Tree (AST), which represents the hier
 
 
 
-## Installation:
- -- Nothing yet 
 
