@@ -60,7 +60,7 @@ const argv = yargs(hideBin(process.argv))
   if (!argv.f) console.log("AST:", JSON.stringify(ast, null, 2));
 
   if (argv.f) {
-    const formattedJson = formatJSON(ast);
+    const formattedJson = formatJSON(ast).trimEnd();
     fs.writeFileSync(filePath, formattedJson);
     console.log("Formatted JSON has been written to the file.");
   }
