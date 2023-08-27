@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./aether.svg" alt="Aether Logo" style="width: 100px;"/>
+  <img src="./aether.svg" alt="Aether Logo" width="250" />
 </div>
 
 # Aether: A Minimalist JSON Parser
