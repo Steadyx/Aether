@@ -1,8 +1,11 @@
 {
   "name": "Aether",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A JSON parser implemented in TypeScript",
   "prepublishOnly": "npm run build",
+  "publishConfig": {
+    "access": "public"
+  },
   "bin": {
     "aether": "dist/main.js"
   },
