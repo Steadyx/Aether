@@ -1,5 +1,5 @@
 {
-  "name": "Aether",
+  "name": "@steadyx/aether",
   "version": "0.0.1",
   "description": "A JSON parser implemented in TypeScript",
   "prepublishOnly": "npm run build",
