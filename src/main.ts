@@ -41,6 +41,8 @@ export const formatJSON = (node: ASTNode, indentLevel: number = 0): string => {
   }
 };
 
+const removeTrailingNewline = (str: string): string => str.replace(/\n$/, '');
+
 const argv = yargs(hideBin(process.argv))
   .option("f", {
     alias: "format",
@@ -61,7 +63,8 @@ const argv = yargs(hideBin(process.argv))
 
   if (argv.f) {
     const formattedJson = formatJSON(ast).trimEnd();
-    fs.writeFileSync(filePath, formattedJson);
+    const formattedJsonWithoutTrailingNewline = removeTrailingNewline(formattedJson);
+    fs.writeFileSync(filePath, formattedJsonWithoutTrailingNewline);
     console.log("Formatted JSON has been written to the file.");
   }
 } catch (error) {
