@@ -2,6 +2,9 @@
   "name": "json-parser-ts",
   "version": "1.0.0",
   "description": "A JSON parser implemented in TypeScript",
+  "bin": {
+    "aether": "dist/main.js"
+  },
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc src/*.ts --outDir dist",
@@ -12,6 +15,10 @@
   "license": "ISC",
   "devDependencies": {
     "@babel/preset-env": "^7.22.10",
+    "@types/yargs": "^17.0.24",
     "babel-jest": "^29.6.4"
+  },
+  "dependencies": {
+    "yargs": "^17.7.2"
   }
 }

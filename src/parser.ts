@@ -1,5 +1,21 @@
-import { Token, NumberToken, StringToken  } from './tokenTypes';
-import { ASTNode, ObjectExpression, NumberLiteral, StringLiteral, ArrayExpression, Property } from './astTypes';
+import {
+  Token,
+  NumberToken,
+  StringToken,
+  BooleanToken,
+  NullToken,
+} from "./tokenTypes";
+
+import {
+  ASTNode,
+  ObjectExpression,
+  NumberLiteral,
+  StringLiteral,
+  BooleanLiteral,
+  NullLiteral,
+  ArrayExpression,
+  Property,
+} from "./astTypes";
 
 export const parse = (tokens: Token[]): ASTNode => {
   const [ast] = walk(tokens, 0);
@@ -14,6 +30,9 @@ export const walk = (tokens: Token[], index: number): [ASTNode, number] => {
     if (token.value === "{") return parseObject(tokens, index);
     if (token.value === "[") return parseArray(tokens, index);
   }
+    if (token.type === "BOOLEAN") return parseBooleanLiteral(token, index); 
+  if (token.type === "NULL") return parseNullLiteral(token, index); 
+
   throw new Error(`Unknown token: ${JSON.stringify(token)}`);
 };
 
@@ -32,6 +51,20 @@ export const parseStringLiteral = (
     { type: "StringLiteral", value: token.value.slice(1, -1) },
     index + 1,
   ];
+};
+
+export const parseBooleanLiteral = (
+  token: BooleanToken,
+  index: number,
+): [BooleanLiteral, number] => {
+  return [{ type: "BooleanLiteral", value: token.value }, index + 1];
+};
+
+export const parseNullLiteral = (
+  _token: NullToken,
+  index: number,
+): [NullLiteral, number] => {
+  return [{ type: "NullLiteral", value: null }, index + 1];
 };
 
 export const parseObject = (
