@@ -12,7 +12,7 @@
   "homepage": "https://github.com/Steadyx/Aether",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Steadyx/Aether"
+    "url": "https://github.com/Steadyx/Aether.git"
   },
   "main": "dist/index.js",
   "scripts": {
@@ -51,6 +51,7 @@
     "serialization",
     "deserialization"
   ],
+  
   "author": "Steadyx",
   "license": "ISC",
   "devDependencies": {
