@@ -22,6 +22,27 @@ Aether is a powerful and minimalist JSON parser designed with a strong sense of 
   npm i -g @steadyx/aether
  ```
 
+## Usage:
+
+### Formatting JSON Code
+To format a JSON file, use the `-f` flag followed by the path to the JSON file.
+
+```bash
+aether -f test.json
+```
+
+This will format the JSON code in `test.json` and overwrite the file with the formatted code.
+
+### Outputting the Abstract Syntax Tree (AST)
+To output the AST of a JSON file, simply provide the path to the JSON file.
+
+```bash
+aether test.json
+```
+
+This will output the AST of the JSON data in `test.json` to the console.
+
+
 
 ### 🎭 The Original JSON String
 
@@ -133,7 +154,3 @@ Next, Aether constructs an Abstract Syntax Tree (AST), which represents the hier
   ]
 }
 ```
-
-
-
-
