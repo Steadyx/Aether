@@ -41,7 +41,7 @@ export const formatJSON = (node: ASTNode, indentLevel: number = 0): string => {
   }
 };
 
-const removeTrailingNewline = (str: string): string => str.replace(/\n$/, '');
+const removeTrailingNewline = (str: string): string => str.replace(/\n$/, "");
 
 const argv = yargs(hideBin(process.argv))
   .option("f", {
@@ -52,7 +52,7 @@ const argv = yargs(hideBin(process.argv))
   .help()
   .alias("help", "h").argv as Yarguments;
 
-  try {
+try {
   const filePath = argv.f ? argv.f : argv._[0];
 
   const json = fs.readFileSync(filePath, "utf8");
@@ -62,10 +62,11 @@ const argv = yargs(hideBin(process.argv))
   if (!argv.f) console.log("AST:", JSON.stringify(ast, null, 2));
 
   if (argv.f) {
-    const formattedJson = formatJSON(ast).trimEnd();
-    const formattedJsonWithoutTrailingNewline = removeTrailingNewline(formattedJson);
-    fs.writeFileSync(filePath, formattedJsonWithoutTrailingNewline);
-    console.log("Formatted JSON has been written to the file.");
+      const formattedJson = formatJSON(ast);
+  const jsonWithoutNewline = removeTrailingNewline(formattedJson);
+  fs.writeFileSync(argv.f, jsonWithoutNewline);
+  console.log("Formatted JSON has been written to the file.");
+
   }
 } catch (error) {
   console.error("An error occurred:", error);
