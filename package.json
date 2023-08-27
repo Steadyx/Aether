@@ -2,6 +2,7 @@
   "name": "json-parser-ts",
   "version": "1.0.0",
   "description": "A JSON parser implemented in TypeScript",
+  "prepublishOnly": "npm run build",
   "bin": {
     "aether": "dist/main.js"
   },
