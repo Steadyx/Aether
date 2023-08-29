@@ -1,6 +1,6 @@
 {
   "name": "@steadyx/aether",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "A JSON parser implemented in TypeScript",
   "prepublishOnly": "npm run build",
   "publishConfig": {
