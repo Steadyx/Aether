@@ -2,7 +2,7 @@
   <img src="./aether.svg" alt="Aether Logo" width="250" />
 </div>
 
-# Aether: A Minimalist JSON Parser
+# Aether: A Minimalist JSON Parser and Formatter
 
 Aether is a powerful and minimalist JSON parser designed with a strong sense of community in mind. It provides a simple and efficient way to parse JSON strings into a structured format, enabling developers to work with JSON data effortlessly.
 
