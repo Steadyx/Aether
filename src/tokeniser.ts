@@ -25,6 +25,7 @@ const applyFirstMatchingRule = (input: string) => {
       return rule.action(input);
     }
   }
+  
   throw new Error(`No matching rule for character '${input[0]}'`);
 };
 

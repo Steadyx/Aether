@@ -31,6 +31,7 @@ export const consumePunctuation = (
     rest: input.slice(1),
   };
 };
+
 export const consumeBoolean = (input: string): { value: BooleanToken; rest: string } => {
   const matchTrue = input.match(/^true/);
   const matchFalse = input.match(/^false/);
