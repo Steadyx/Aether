@@ -1,10 +1,19 @@
-import { NumberToken, StringToken, PunctuationToken, BooleanToken, NullToken } from "./tokenTypes";
+import {
+  NumberToken,
+  StringToken,
+  PunctuationToken,
+  BooleanToken,
+  NullToken,
+  CommentToken,
+} from "./tokenTypes";
 
 export const consumeWhitespace = (input: string): { rest: string } => {
   return { rest: input.replace(/^\s+/, "") };
 };
 
-export const consumeNumber = (input: string): { value: NumberToken; rest: string } => {
+export const consumeNumber = (
+  input: string,
+): { value: NumberToken; rest: string } => {
   const match = input.match(/^-?\d+(\.\d+)?([eE][+-]?\d+)?/);
   return {
     value: { type: "NUMBER", value: parseFloat(match![0]) },
@@ -12,7 +21,9 @@ export const consumeNumber = (input: string): { value: NumberToken; rest: string
   };
 };
 
-export const consumeString = (input: string): { value: StringToken; rest: string } => {
+export const consumeString = (
+  input: string,
+): { value: StringToken; rest: string } => {
   const quote = input[0];
   const match = input.match(
     new RegExp(`^${quote}(?:[^${quote}\\\\]|\\\\.)*${quote}`),
@@ -32,7 +43,9 @@ export const consumePunctuation = (
   };
 };
 
-export const consumeBoolean = (input: string): { value: BooleanToken; rest: string } => {
+export const consumeBoolean = (
+  input: string,
+): { value: BooleanToken; rest: string } => {
   const matchTrue = input.match(/^true/);
   const matchFalse = input.match(/^false/);
 
@@ -53,7 +66,9 @@ export const consumeBoolean = (input: string): { value: BooleanToken; rest: stri
   throw new Error("Invalid boolean token");
 };
 
-export const consumeNull = (input: string): { value: NullToken; rest: string } => {
+export const consumeNull = (
+  input: string,
+): { value: NullToken; rest: string } => {
   const match = input.match(/^null/);
 
   if (match) {
@@ -65,3 +80,31 @@ export const consumeNull = (input: string): { value: NullToken; rest: string } =
 
   throw new Error("Invalid null token");
 };
+
+export const consumeComment = (input: string): { value: CommentToken; rest: string } => {
+  const endOfLine = input.indexOf('\n');
+
+  return endOfLine === -1 ? 
+    { 
+      value: { type: "COMMENT", value: input.slice(2) },
+      rest: '' 
+    } : 
+    { 
+      value: { type: "COMMENT", value: input.slice(2, endOfLine) },
+      rest: input.slice(endOfLine + 1)
+    };
+};
+
+export const consumeMultiLineComment = (input: string): { value: CommentToken; rest: string } => {
+  const endOfComment = input.indexOf('*/');
+  
+  if (endOfComment === -1) {
+    throw new Error("Unterminated multi-line comment");
+  }
+
+  return {
+    value: { type: "COMMENT", value: input.slice(2, endOfComment) },
+    rest: input.slice(endOfComment + 2)
+  };
+};
+

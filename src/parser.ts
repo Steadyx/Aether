@@ -18,7 +18,8 @@ import {
 } from "./astTypes";
 
 export const parse = (tokens: Token[]): ASTNode => {
-  const [ast] = walk(tokens, 0);
+   const filteredTokens = tokens.filter(token => token.type !== "COMMENT");
+    const [ast] = walk(filteredTokens, 0);
   return ast;
 };
 

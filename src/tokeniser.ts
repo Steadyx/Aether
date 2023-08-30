@@ -7,10 +7,14 @@ import {
   consumePunctuation,
   consumeBoolean,
   consumeNull,
+  consumeComment,
+  consumeMultiLineComment
 } from "./helpers";
 
 const tokenRules: { regex: RegExp; action: (input: string) => TokenResult }[] =
   [
+    { regex: /^\/\/.*/, action: consumeComment },
+    { regex: /^\/\*[\s\S]*?\*\//, action: consumeMultiLineComment },
     { regex: /^\s+/, action: consumeWhitespace },
     { regex: /^-?\d+(\.\d+)?([eE][+-]?\d+)?/, action: consumeNumber },
     { regex: /^['"](?:[^'"]|\\.)*['"]/, action: consumeString },
@@ -25,7 +29,7 @@ const applyFirstMatchingRule = (input: string) => {
       return rule.action(input);
     }
   }
-  
+
   throw new Error(`No matching rule for character '${input[0]}'`);
 };
 

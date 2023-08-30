@@ -3,7 +3,8 @@ export type Token =
   | StringToken
   | PunctuationToken
   | BooleanToken
-  | NullToken;
+  | NullToken
+  | CommentToken;
 
 export interface NumberToken {
   type: "NUMBER";
@@ -28,6 +29,11 @@ export interface BooleanToken {
 export interface NullToken {
   type: "NULL";
   value: null;
+}
+
+export interface CommentToken {
+  type: "COMMENT";
+  value: string;
 }
 
 export type TokenResult = { value?: Token; rest: string };
