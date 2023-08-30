@@ -81,30 +81,33 @@ export const consumeNull = (
   throw new Error("Invalid null token");
 };
 
-export const consumeComment = (input: string): { value: CommentToken; rest: string } => {
-  const endOfLine = input.indexOf('\n');
+export const consumeComment = (
+  input: string,
+): { value: CommentToken; rest: string } => {
+  const endOfLine = input.indexOf("\n");
 
-  return endOfLine === -1 ? 
-    { 
-      value: { type: "COMMENT", value: input.slice(2) },
-      rest: '' 
-    } : 
-    { 
-      value: { type: "COMMENT", value: input.slice(2, endOfLine) },
-      rest: input.slice(endOfLine + 1)
-    };
+  return endOfLine === -1
+    ? {
+        value: { type: "COMMENT", value: input.slice(2) },
+        rest: "",
+      }
+    : {
+        value: { type: "COMMENT", value: input.slice(2, endOfLine) },
+        rest: input.slice(endOfLine + 1),
+      };
 };
 
-export const consumeMultiLineComment = (input: string): { value: CommentToken; rest: string } => {
-  const endOfComment = input.indexOf('*/');
-  
+export const consumeMultiLineComment = (
+  input: string,
+): { value: CommentToken; rest: string } => {
+  const endOfComment = input.indexOf("*/");
+
   if (endOfComment === -1) {
     throw new Error("Unterminated multi-line comment");
   }
 
   return {
     value: { type: "COMMENT", value: input.slice(2, endOfComment) },
-    rest: input.slice(endOfComment + 2)
+    rest: input.slice(endOfComment + 2),
   };
 };
-

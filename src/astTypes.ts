@@ -42,4 +42,3 @@ export interface NullLiteral {
   type: "NullLiteral";
   value: null;
 }
-

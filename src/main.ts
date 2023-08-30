@@ -62,11 +62,10 @@ try {
   if (!argv.f) console.log("AST:", JSON.stringify(ast, null, 2));
 
   if (argv.f) {
-      const formattedJson = formatJSON(ast);
-  const jsonWithoutNewline = removeTrailingNewline(formattedJson);
-  fs.writeFileSync(argv.f, jsonWithoutNewline);
-  console.log("Formatted JSON has been written to the file.");
-
+    const formattedJson = formatJSON(ast);
+    const jsonWithoutNewline = removeTrailingNewline(formattedJson);
+    fs.writeFileSync(argv.f, jsonWithoutNewline);
+    console.log("Formatted JSON has been written to the file.");
   }
 } catch (error) {
   console.error("An error occurred:", error);

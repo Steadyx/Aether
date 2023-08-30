@@ -8,7 +8,7 @@ import {
   consumeBoolean,
   consumeNull,
   consumeComment,
-  consumeMultiLineComment
+  consumeMultiLineComment,
 } from "./helpers";
 
 const tokenRules: { regex: RegExp; action: (input: string) => TokenResult }[] =

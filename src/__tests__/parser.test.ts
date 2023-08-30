@@ -1,7 +1,5 @@
 import { parse } from "../parser";
 
-
-
 describe("parse", () => {
   it("should parse a number", () => {
     expect(parse([{ type: "NUMBER", value: 42 }])).toEqual({
@@ -133,4 +131,3 @@ describe("parse", () => {
     });
   });
 });
-
