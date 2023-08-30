@@ -17,7 +17,6 @@ import {
   Property,
 } from "./astTypes";
 
-
 export const parseNumberLiteral = (
   token: NumberToken,
   index: number,
@@ -107,5 +106,3 @@ export const walk = (tokens: Token[], index: number): [ASTNode, number] => {
 
   throw new Error(`Unknown token: ${JSON.stringify(token)}`);
 };
-
-
