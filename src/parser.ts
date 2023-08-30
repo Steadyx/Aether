@@ -18,8 +18,8 @@ import {
 } from "./astTypes";
 
 export const parse = (tokens: Token[]): ASTNode => {
-   const filteredTokens = tokens.filter(token => token.type !== "COMMENT");
-    const [ast] = walk(filteredTokens, 0);
+  const filteredTokens = tokens.filter((token) => token.type !== "COMMENT");
+  const [ast] = walk(filteredTokens, 0);
   return ast;
 };
 
@@ -31,8 +31,8 @@ export const walk = (tokens: Token[], index: number): [ASTNode, number] => {
     if (token.value === "{") return parseObject(tokens, index);
     if (token.value === "[") return parseArray(tokens, index);
   }
-    if (token.type === "BOOLEAN") return parseBooleanLiteral(token, index); 
-  if (token.type === "NULL") return parseNullLiteral(token, index); 
+  if (token.type === "BOOLEAN") return parseBooleanLiteral(token, index);
+  if (token.type === "NULL") return parseNullLiteral(token, index);
 
   throw new Error(`Unknown token: ${JSON.stringify(token)}`);
 };
