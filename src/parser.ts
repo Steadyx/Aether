@@ -1,13 +1,6 @@
-import {
-  Token,
-} from "./tokenTypes";
-
-import {
-  ASTNode,
-} from "./astTypes";
-
-import {walk } from './helpers';
-
+import { Token } from "./tokenTypes";
+import { ASTNode } from "./astTypes";
+import { walk } from "./parserHelpers";
 
 export const parse = (tokens: Token[]): ASTNode => {
   const filteredTokens = tokens.filter((token) => token.type !== "COMMENT");
@@ -15,4 +8,4 @@ export const parse = (tokens: Token[]): ASTNode => {
   return ast;
 };
 
-
+export default parse;

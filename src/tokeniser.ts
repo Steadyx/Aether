@@ -9,7 +9,7 @@ import {
   consumeNull,
   consumeComment,
   consumeMultiLineComment,
-} from "./helpers";
+} from "./tokeniserHelpers";
 
 const tokenRules: { regex: RegExp; action: (input: string) => TokenResult }[] =
   [
