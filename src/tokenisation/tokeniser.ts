@@ -1,4 +1,4 @@
-import { Token, TokenResult } from "./tokenTypes";
+import { Token, TokenResult } from "@/types/tokenTypes";
 
 import {
   consumeNumber,
@@ -9,7 +9,7 @@ import {
   consumeNull,
   consumeComment,
   consumeMultiLineComment,
-} from "./tokeniserHelpers";
+} from "@/tokenisation/helpers";
 
 const tokenRules: { regex: RegExp; action: (input: string) => TokenResult }[] =
   [

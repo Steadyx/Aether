@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import tokenize from "./tokeniser";
-import parse from "./parser";
-import { ASTNode } from "./astTypes";
+import tokenize from "@/tokenisation/tokeniser";
+import parse from "@/parsing/parser";
+import { ASTNode } from "@/types/astTypes";
 import * as fs from "fs";
 
 interface Yarguments {
